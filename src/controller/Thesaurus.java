@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package thesaurusotomatis;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +22,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
+import org.json.JSONException;
 
 /**
  *
@@ -114,7 +115,7 @@ public class Thesaurus {
                     
                 for (String stemm : listTermDoc){
                     Stemming st = new Stemming(); //Stemm
-                    stemm = st.KataDasar(stemm);
+//                    stemm = st.KataDasar(stemm);
                     hasilStemm.add(stemm);
                        
                     if(!allTerms.contains(stemm)){ //menghindari duplikat entri. untuk mendapatkan seluruh term pada dokumen
@@ -330,7 +331,7 @@ public class Thesaurus {
      * input : file txt hasil Thesaurus
      * output : hasil file txt hasil validasi Thesaurus.
      */
-    public void cekKateglo() throws FileNotFoundException, IOException, InterruptedException{
+    public void cekKateglo() throws FileNotFoundException, IOException, InterruptedException, JSONException{
         String kata1;
         String kata2;
         Boolean adaKata;

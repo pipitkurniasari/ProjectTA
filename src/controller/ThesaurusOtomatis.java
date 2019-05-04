@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
-package thesaurusotomatis;
+package controller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import org.json.JSONException;
 
 /**
  *
@@ -21,7 +22,7 @@ public class ThesaurusOtomatis {
     * @exception IOException
     */
     public static void main(String[] args)
-	  throws IOException, FileNotFoundException, InterruptedException {
+	throws IOException, FileNotFoundException, InterruptedException, JSONException {
     
         Thesaurus ts = new Thesaurus();
         ts.parseFile("D:\\Data\\ayatValid");
