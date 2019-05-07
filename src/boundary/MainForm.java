@@ -5,6 +5,7 @@
  */
 package boundary;
 
+import controller.CosineSimilarity;
 import controller.DocumentReader;
 import controller.Pembobotan;
 import entity.Dokumen;
@@ -28,6 +29,12 @@ public class MainForm extends javax.swing.JFrame {
     private String selectedFile;
     private DocumentReader dr;
     private List<Dokumen> dokumenAsli;
+    private List<Dokumen> dokumenPembanding;
+    private Pembobotan bobotAsli, bobotPembanding;
+    private double[][] bobotDocAsli;
+    private double[][] bobotDocPembanding;
+    
+    
     /**
      * Creates new form MainForm
      */
@@ -154,14 +161,14 @@ public class MainForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Dokumen Pembanding");
 
-        dokPembanding.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dokumen A", "Dokumen B", "Dokumen C", "Dokumen D", "Dokumen E", "Dokumen F", "Dokumen G", "Dokumen H", "Dokumen I", "Dokumen J", "Dokumen K", "Dokumen L", "Dokumen M", "Dokumen N", "Dokumen O", "Dokumen P", "Dokumen Q", "Dokumen R", "Dokumen S" }));
+        dokPembanding.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dokumen Pembanding A", "Dokumen Pembanding B", "Dokumen Pembanding C", "Dokumen Pembanding D", "Dokumen Pembanding E", "Dokumen Pembanding F", "Dokumen Pembanding G", "Dokumen Pembanding H", "Dokumen Pembanding I", "Dokumen Pembanding J", "Dokumen Pembanding K", "Dokumen Pembanding L", "Dokumen Pembanding M", "Dokumen Pembanding N", "Dokumen Pembanding O", "Dokumen Pembanding P", "Dokumen Pembanding Q", "Dokumen Pembanding R", "Dokumen Pembanding S" }));
         dokPembanding.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dokPembandingActionPerformed(evt);
             }
         });
 
-        kemiripanBtn.setText("Kemiripan");
+        kemiripanBtn.setText("Similarity");
         kemiripanBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kemiripanBtnActionPerformed(evt);
@@ -180,8 +187,8 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dokPembanding, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(dokPembanding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(kemiripanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -300,15 +307,17 @@ public class MainForm extends javax.swing.JFrame {
                 System.out.println("Selected File: " + selectedFile);
                 dr = new DocumentReader(selectedFile);
                 try {
-                    dr.readDokumenAsli();
+                    dr.readDokumen();
                 } catch (IOException ex) {
                     Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 dokumenAsli = dr.getDokumenList();
                 
-                Pembobotan bobot = new Pembobotan(dokumenAsli);
-                bobot.siapData();
-                bobot.doPembobotan();
+                bobotAsli = new Pembobotan(dokumenAsli);
+                bobotAsli.prepareDokumenAsli();
+                bobotAsli.doPembobotan();
+                
+                
                 
 //                for (int i = 0; i < dokumenAsli.size(); i++) {
 //                    System.out.println(dokumenAsli.get(i).getJudulDokumen() +" " +dokumenAsli.get(i).getIsiDokumen());
@@ -345,12 +354,44 @@ public class MainForm extends javax.swing.JFrame {
         
     }
     
+    public void prosesWithQE() {
+        
+    }
+    
+    public void prosesWithoutQE() throws IOException {
+        String data, path;
+        
+            data = dokPembanding.getSelectedItem().toString();
+            path = "data/"+data+".txt";
+            
+            System.out.println(path);
+            
+            dr = new DocumentReader(path);
+            try {
+                dr.readDokumen();
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            dokumenPembanding = dr.getDokumenList();
+            
+            bobotPembanding = new Pembobotan(dokumenPembanding);
+            bobotPembanding.prepareDokumenPembanding();
+            
+    }
+    
     private void kemiripanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kemiripanBtnActionPerformed
         // TODO add your handling code here:
         if(thesaurusRB.isSelected()) {
+            prosesWithQE();
             
         } else {
-            
+            try {
+                prosesWithoutQE();
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
         }
     }//GEN-LAST:event_kemiripanBtnActionPerformed
 

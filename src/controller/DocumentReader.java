@@ -37,7 +37,7 @@ public class DocumentReader {
         
     }
     
-    public void readDokumenAsli() throws FileNotFoundException, IOException {     
+    public void readDokumen() throws FileNotFoundException, IOException {     
         docList = new ArrayList<>();
         File file = new File(filePath);
         //System.out.println(filePath);
