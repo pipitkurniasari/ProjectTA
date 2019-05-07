@@ -40,10 +40,13 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
-        applyBtn.setEnabled(false);
-        thesaurusRB.setEnabled(false);
-        kemiripanBtn.setEnabled(false);
-        dokPembanding.setEnabled(false);
+        
+        similarityBtn.setEnabled(false);
+        dokCB.setEnabled(false);
+        createBtn.setEnabled(false);
+        sizeCB.setEnabled(false);
+        withQeRB.setEnabled(false);
+        withoutQeRB.setEnabled(false);
     }
 
     /**
@@ -55,19 +58,26 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        QueryEkspansi = new javax.swing.ButtonGroup();
+        similarityRBG = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         filePath = new javax.swing.JTextField();
         loadBtn = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        thesaurusRB = new javax.swing.JRadioButton();
-        applyBtn = new javax.swing.JButton();
+        createBtn = new javax.swing.JButton();
+        sizeCB = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        dokPembanding = new javax.swing.JComboBox<>();
-        kemiripanBtn = new javax.swing.JButton();
+        dokCB = new javax.swing.JComboBox<>();
+        similarityBtn = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        withoutQeRB = new javax.swing.JRadioButton();
+        withQeRB = new javax.swing.JRadioButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -116,30 +126,28 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
-        thesaurusRB.setBackground(new java.awt.Color(204, 204, 204));
-        thesaurusRB.setText("Thesaurus");
-        thesaurusRB.addActionListener(new java.awt.event.ActionListener() {
+        createBtn.setText("Create");
+        createBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                thesaurusRBActionPerformed(evt);
+                createBtnActionPerformed(evt);
             }
         });
 
-        applyBtn.setText("Apply");
-        applyBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applyBtnActionPerformed(evt);
-            }
-        });
+        sizeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4", "5", "6" }));
+
+        jLabel6.setText("Size");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(thesaurusRB)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel6)
+                .addGap(26, 26, 26)
+                .addComponent(sizeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(applyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(createBtn)
                 .addGap(25, 25, 25))
         );
         jPanel4Layout.setVerticalGroup(
@@ -147,33 +155,82 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(thesaurusRB)
-                    .addComponent(applyBtn))
+                    .addComponent(createBtn)
+                    .addComponent(sizeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Dokumen Asli");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel2.setText("Query Ekspansi");
+        jLabel2.setText("Pembentukan Query Ekspansi");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Dokumen Pembanding");
 
-        dokPembanding.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dokumen Pembanding A", "Dokumen Pembanding B", "Dokumen Pembanding C", "Dokumen Pembanding D", "Dokumen Pembanding E", "Dokumen Pembanding F", "Dokumen Pembanding G", "Dokumen Pembanding H", "Dokumen Pembanding I", "Dokumen Pembanding J", "Dokumen Pembanding K", "Dokumen Pembanding L", "Dokumen Pembanding M", "Dokumen Pembanding N", "Dokumen Pembanding O", "Dokumen Pembanding P", "Dokumen Pembanding Q", "Dokumen Pembanding R", "Dokumen Pembanding S" }));
-        dokPembanding.addActionListener(new java.awt.event.ActionListener() {
+        dokCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dokumen Pembanding A", "Dokumen Pembanding B", "Dokumen Pembanding C", "Dokumen Pembanding D", "Dokumen Pembanding E", "Dokumen Pembanding F", "Dokumen Pembanding G", "Dokumen Pembanding H", "Dokumen Pembanding I", "Dokumen Pembanding J", "Dokumen Pembanding K", "Dokumen Pembanding L", "Dokumen Pembanding M", "Dokumen Pembanding N", "Dokumen Pembanding O", "Dokumen Pembanding P", "Dokumen Pembanding Q", "Dokumen Pembanding R", "Dokumen Pembanding S" }));
+        dokCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dokPembandingActionPerformed(evt);
+                dokCBActionPerformed(evt);
             }
         });
 
-        kemiripanBtn.setText("Similarity");
-        kemiripanBtn.addActionListener(new java.awt.event.ActionListener() {
+        similarityBtn.setText("Similarity");
+        similarityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kemiripanBtnActionPerformed(evt);
+                similarityBtnActionPerformed(evt);
             }
         });
+
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+
+        withoutQeRB.setBackground(new java.awt.Color(204, 204, 204));
+        similarityRBG.add(withoutQeRB);
+        withoutQeRB.setText("Tanpa Query Expansion");
+        withoutQeRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withoutQeRBActionPerformed(evt);
+            }
+        });
+
+        withQeRB.setBackground(new java.awt.Color(204, 204, 204));
+        similarityRBG.add(withQeRB);
+        withQeRB.setText("Dengan Query Expansion");
+        withQeRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withQeRBActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(withQeRB)
+                    .addComponent(withoutQeRB))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(withoutQeRB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(withQeRB)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jLabel7.setText("Deteksi Kemiripan Teks");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Execution Time");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,39 +238,53 @@ public class MainForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(dokPembanding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(kemiripanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(dokCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(similarityBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(54, 54, 54)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dokPembanding, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kemiripanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dokCB, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(similarityBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Hasil Pengujian Tanpa Query Ekspansi");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,7 +313,6 @@ public class MainForm extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Hasil Pengujian Dengan Query Ekspansi");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -261,9 +331,9 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -334,9 +404,12 @@ public class MainForm extends javax.swing.JFrame {
 
         }
         
-        thesaurusRB.setEnabled(true);
-        dokPembanding.setEnabled(true);
-        kemiripanBtn.setEnabled(true);
+        
+        
+        createBtn.setEnabled(true);
+        sizeCB.setEnabled(true);
+        withQeRB.setEnabled(true);
+        withoutQeRB.setEnabled(true);
         
     }//GEN-LAST:event_loadBtnActionPerformed
 
@@ -361,7 +434,7 @@ public class MainForm extends javax.swing.JFrame {
     public void prosesWithoutQE() throws IOException {
         String data, path;
         
-            data = dokPembanding.getSelectedItem().toString();
+            data = dokCB.getSelectedItem().toString();
             path = "data/"+data+".txt";
             
             System.out.println(path);
@@ -380,40 +453,46 @@ public class MainForm extends javax.swing.JFrame {
             
     }
     
-    private void kemiripanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kemiripanBtnActionPerformed
+    private void similarityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_similarityBtnActionPerformed
         // TODO add your handling code here:
-        if(thesaurusRB.isSelected()) {
-            prosesWithQE();
-            
-        } else {
+        if(withoutQeRB.isSelected()) {
             try {
                 prosesWithoutQE();
             } catch (IOException ex) {
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        } else if (withQeRB.isSelected()) {
+            prosesWithQE();
           
         }
-    }//GEN-LAST:event_kemiripanBtnActionPerformed
+    }//GEN-LAST:event_similarityBtnActionPerformed
 
-    private void thesaurusRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thesaurusRBActionPerformed
-        // TODO add your handling code here:
-        applyBtn.setEnabled(true);
-        dokPembanding.setEnabled(false);
-        kemiripanBtn.setEnabled(false);
-    }//GEN-LAST:event_thesaurusRBActionPerformed
-
-    private void applyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyBtnActionPerformed
-        // TODO add your handling code here:
-        if(thesaurusRB.isSelected()) {
-            dokPembanding.setEnabled(true);
-            kemiripanBtn.setEnabled(true);
-        }
-    }//GEN-LAST:event_applyBtnActionPerformed
-
-    private void dokPembandingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dokPembandingActionPerformed
+    private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_dokPembandingActionPerformed
+    }//GEN-LAST:event_createBtnActionPerformed
+
+    private void dokCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dokCBActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_dokCBActionPerformed
+
+    private void withoutQeRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withoutQeRBActionPerformed
+        // TODO add your handling code here:
+        dokCB.setEnabled(true);
+        similarityBtn.setEnabled(true);
+    }//GEN-LAST:event_withoutQeRBActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void withQeRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withQeRBActionPerformed
+        // TODO add your handling code here:
+        dokCB.setEnabled(true);
+        similarityBtn.setEnabled(true);
+    }//GEN-LAST:event_withQeRBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,25 +530,32 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup QueryEkspansi;
-    private javax.swing.JButton applyBtn;
-    private javax.swing.JComboBox<String> dokPembanding;
+    private javax.swing.JButton createBtn;
+    private javax.swing.JComboBox<String> dokCB;
     private javax.swing.JTextField filePath;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton kemiripanBtn;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton loadBtn;
-    private javax.swing.JRadioButton thesaurusRB;
+    private javax.swing.JButton similarityBtn;
+    private javax.swing.ButtonGroup similarityRBG;
+    private javax.swing.JComboBox<String> sizeCB;
+    private javax.swing.JRadioButton withQeRB;
+    private javax.swing.JRadioButton withoutQeRB;
     // End of variables declaration//GEN-END:variables
 }
