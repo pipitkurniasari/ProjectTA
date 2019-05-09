@@ -40,7 +40,7 @@ public class Pembobotan {
         }
         daftarTermUnik = prapengolahan.getDaftarTermUnik();
         
-
+        
     }
     
     public void prepareDokumenPembanding() {
